@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer">
+<title>EV Desk: Schwab re-login</title>
+<style>
+*{-webkit-tap-highlight-color:transparent}
+body{font-family:-apple-system,system-ui,Segoe UI,Roboto,sans-serif;max-width:560px;margin:0 auto;padding:18px 16px 48px;background:#f6f7f9;color:#111;font-size:17px;line-height:1.45}
+h1{font-size:22px;margin:0 0 14px}
+.card{background:#fff;border-radius:12px;padding:14px 16px;margin-bottom:14px;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.btn{display:block;width:100%;box-sizing:border-box;text-align:center;font-size:20px;font-weight:700;padding:16px;border-radius:12px;border:0;text-decoration:none;background:#0b5cd5;color:#fff;cursor:pointer;font-family:inherit}
+.btn.disabled{background:#9db7e0;pointer-events:none}
+button.go{background:#0a7d34;margin-top:10px}
+button.paste{background:#444;font-size:18px;padding:13px;margin-bottom:10px}
+button:disabled{opacity:.55}
+textarea{width:100%;box-sizing:border-box;font-size:16px;padding:12px;border:1px solid #bbb;border-radius:10px;min-height:88px;font-family:inherit}
+.status{font-size:20px;font-weight:700}
+.ok{color:#0a7d34}.bad{color:#b3261e}
+.muted{color:#555;font-size:15px;margin-top:6px}
+#result{font-size:21px;font-weight:700;margin-top:12px;line-height:1.35}
+#result:empty{display:none}
+ol{padding-left:22px;margin:0}li{margin:8px 0}
+code{background:#eef;padding:1px 5px;border-radius:5px;word-break:break-all;font-size:15px}
+.hint{font-size:15px;color:#555;margin-top:8px}
+</style></head>
+<body><h1>EV Desk: Schwab re-login</h1>
+<div class="card"><div class="status" id="status">Checking Schwab login status...</div><div class="muted" id="sub"></div></div>
+<div class="card"><a class="btn disabled" id="login" href="#" target="_blank" rel="noopener noreferrer">1. Log in to Schwab</a><div class="hint">Opens in a new tab. Log in, approve the app, and you land on a blank page whose address starts with <code>https://127.0.0.1/?code=</code>. Copy that whole address (tap the address bar, Select All, Copy), then come back to this tab.</div></div>
+<div class="card"><button class="btn paste" id="paste" type="button">2. Paste the copied address</button>
+<textarea id="r" placeholder="https://127.0.0.1/?code=...&session=..." autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" inputmode="url"></textarea>
+<button class="btn go" id="go" type="button">3. Submit</button>
+<div id="result" role="status" aria-live="polite"></div>
+<div class="hint">The code Schwab hands you lasts about 30 seconds, so paste and submit right after copying. If it says the code expired, just tap Log in to Schwab again.</div></div>
+<script src="app.js"></script></body></html>

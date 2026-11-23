@@ -2,7 +2,8 @@
 // Hosted static page. Open it as <page>#<k> where <k> is the secret from public.schwab_reauth_url().
 // The secret is read from the hash, kept in a closure, and never written to the DOM, console, or any log.
 var API='https://qdigexcouztravbfpwhb.supabase.co/functions/v1/schwab_reauth';
-var k=(location.hash||'').slice(1);
+// Keep only the leading key characters: old alert formats appended '&redirect_url=' to the link, which made every call 403.
+var k=(((location.hash||'').slice(1)).match(/^[A-Za-z0-9_-]+/)||[''])[0];
 var st=document.getElementById('status'),sub=document.getElementById('sub'),r=document.getElementById('r'),res=document.getElementById('result'),login=document.getElementById('login'),go=document.getElementById('go'),pasteBtn=document.getElementById('paste');
 try{if(k&&history.replaceState)history.replaceState(null,'',location.pathname+location.search+location.hash);}catch(e){}
 function api(o){return fetch(API+'?k='+encodeURIComponent(k),o).then(function(x){return x.json().then(function(j){j._http=x.status;return j;});});}
